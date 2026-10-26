@@ -12,6 +12,17 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-7BB36Z5C4X', { transport_type: 'beacon' });
 </script>
+<!-- Meta Pixel: Carvo Pixel - get.carvo.co -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1622478656289979');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1622478656289979&ev=PageView&noscript=1"/></noscript>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;800&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -115,10 +126,24 @@ h1 {
 </div>
 
 <script>
-var src = new URLSearchParams(window.location.search).get('src') || 'qr_flyer';
-var ios = "https://apps.apple.com/eg/app/carvo/id6757989520";
+var qs = new URLSearchParams(window.location.search);
+// Channel: explicit src wins, then utm_source, then a Meta click id; default is the flyer QR.
+var src = qs.get('src') || qs.get('utm_source') || (qs.get('fbclid') ? 'meta' : 'qr_flyer');
+src = src.toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'qr_flyer';
+var medium = qs.get('utm_medium') || (src === 'meta' ? 'paid_social' : 'qr');
+var campaign = qs.get('utm_campaign') || 'nov2026';
+
+// App Store campaign link: fill APPLE_PT with the provider token from App Store Connect
+// (Apps > Analytics > Campaign Generator). Without it, iOS installs are not split by channel.
+var APPLE_PT = "";
+var ios = "https://apps.apple.com/eg/app/carvo/id6757989520"
++ (APPLE_PT ? "?pt=" + APPLE_PT + "&ct=" + encodeURIComponent(src) + "&mt=8" : "");
 var android = "https://play.google.com/store/apps/details?id=app.carvo.customer&referrer="
-+ encodeURIComponent("utm_source=" + src + "&utm_medium=qr&utm_campaign=nov2026");
++ encodeURIComponent("utm_source=" + src + "&utm_medium=" + medium + "&utm_campaign=" + campaign);
+
+function pixelRedirect(p) {
+  if (window.fbq) fbq('trackCustom', 'StoreRedirect', { platform: p, source: src });
+}
 
 var ua = navigator.userAgent || navigator.vendor || window.opera;
 var platform = "other";
@@ -137,15 +162,17 @@ document.getElementById("manual-link").href = dest;
 document.getElementById("manual-link").onclick = function(){ gtag('event','manual_click',{platform:platform,source:src}); };
 document.getElementById("btn-ios").href = ios;
 document.getElementById("btn-and").href = android;
-document.getElementById("btn-ios").onclick = function(){ gtag('event','manual_click',{platform:'ios',source:src}); };
-document.getElementById("btn-and").onclick = function(){ gtag('event','manual_click',{platform:'android',source:src}); };
+document.getElementById("btn-ios").onclick = function(){ gtag('event','manual_click',{platform:'ios',source:src}); pixelRedirect('ios'); };
+document.getElementById("btn-and").onclick = function(){ gtag('event','manual_click',{platform:'android',source:src}); pixelRedirect('android'); };
 
 if (platform === "other") {
   document.getElementById("tag").textContent = "حمّل التطبيق";
   document.getElementById("bar").style.display = "none";
   document.getElementById("btns").style.display = "flex";
 } else {
-  setTimeout(function() { window.location.href = dest; }, 1200);
+  pixelRedirect(platform);
+  // Slightly longer than before so the Meta Pixel beacon leaves before the store opens.
+  setTimeout(function() { window.location.href = dest; }, 1500);
 }
 </script>
 </body>
