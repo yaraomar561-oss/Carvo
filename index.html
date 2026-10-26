@@ -135,7 +135,7 @@ var campaign = qs.get('utm_campaign') || 'nov2026';
 
 // App Store campaign link: fill APPLE_PT with the provider token from App Store Connect
 // (Apps > Analytics > Campaign Generator). Without it, iOS installs are not split by channel.
-var APPLE_PT = "";
+var APPLE_PT = "128464915";
 var ios = "https://apps.apple.com/eg/app/carvo/id6757989520"
 + (APPLE_PT ? "?pt=" + APPLE_PT + "&ct=" + encodeURIComponent(src) + "&mt=8" : "");
 var android = "https://play.google.com/store/apps/details?id=app.carvo.customer&referrer="
