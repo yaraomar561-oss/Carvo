@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#E4E4E4">
-<title>Carvo</title>
+<title>كارفو — عناية فائقة التميّز، تصلك أينما كنت.</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BB36Z5C4X"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -23,15 +23,18 @@ fbq('init', '1622478656289979');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1622478656289979&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;800&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
 body {
-  font-family: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
+  font-family: 'Almarai', 'Segoe UI', Tahoma, sans-serif;
   background: #E4E4E4;
   padding: 12px;
   display: flex;
+  color: #0B0B0B;
 }
 .card {
   flex: 1;
@@ -39,91 +42,128 @@ body {
   border-radius: 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 32px 24px;
+  padding: 22px 22px 28px;
   position: relative;
+  overflow: hidden;
   animation: rise .45s ease both;
 }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.logo { width: 132px; height: auto; margin-bottom: 28px; }
+.top { display: flex; align-items: center; justify-content: space-between; }
+.logo { width: 104px; height: auto; display: block; }
+.cta-top {
+  background: #0B0B0B; color: #fff; text-decoration: none;
+  font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 999px;
+}
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px 0 8px;
+}
 .badge {
-  display: inline-block;
+  align-self: flex-start;
   background: #EAF2FE;
   color: #2F80ED;
   font-size: 13px;
   font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 999px;
-  margin-bottom: 16px;
+  padding: 9px 14px;
+  border-radius: 8px;
 }
 h1 {
-  font-size: 24px;
+  font-size: clamp(36px, 10.5vw, 64px);
   font-weight: 800;
-  color: #0B0B0B;
-  line-height: 1.5;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
 }
-.bar {
-  margin-top: 32px;
-  width: 160px;
-  height: 4px;
-  border-radius: 99px;
-  background: rgba(11,11,11,.08);
-  overflow: hidden;
+.car-wrap {
   position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  background-image: radial-gradient(rgba(11,11,11,.07) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+  border-radius: 20px;
+}
+.car {
+  width: min(78%, 340px);
+  height: auto;
+  animation: drive .9s cubic-bezier(.2,.7,.2,1) both .1s;
+}
+@keyframes drive { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+.status {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  margin-top: 8px;
+}
+.status p { font-size: 14px; color: #6B6B6B; font-weight: 700; }
+.bar {
+  width: 160px; height: 4px; border-radius: 99px;
+  background: rgba(11,11,11,.08); overflow: hidden; position: relative;
 }
 .bar::after {
-  content: '';
-  position: absolute;
-  top: 0; right: -40%;
-  width: 40%;
-  height: 100%;
-  border-radius: 99px;
-  background: #0B0B0B;
-  animation: sweep 1.1s ease-in-out infinite;
+  content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 0;
+  border-radius: 99px; background: #0B0B0B;
+  animation: fill 2s linear forwards;
 }
-@keyframes sweep { to { right: 100%; } }
-.btns { display: none; flex-direction: column; gap: 12px; margin-top: 32px; width: 100%; max-width: 300px; }
-.btns a {
-  display: block;
-  padding: 15px 0;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #fff;
-  background: #0B0B0B;
-}
-.btns a.alt { background: #fff; color: #0B0B0B; border: 1.5px solid #0B0B0B; }
-.manual {
-  position: absolute;
-  bottom: 24px;
-  right: 0; left: 0;
-  font-size: 13px;
-  color: #9A9A9A;
-}
+@keyframes fill { to { width: 100%; } }
+.stores { display: none; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.stores a.store { display:block; padding: 13px 26px; border-radius: 999px; border: 1.5px solid #0B0B0B; color:#0B0B0B; text-decoration:none; font-weight:700; font-size:15px; font-family: 'Segoe UI', Tahoma, sans-serif; }
+.stores a.store:first-child { background:#0B0B0B; color:#fff; }
+.manual { text-align: center; font-size: 13px; color: #9A9A9A; margin-top: 14px; }
 .manual a { color: #0B0B0B; text-decoration: none; border-bottom: 1px solid #CFCFCF; padding-bottom: 1px; }
+
+/* Desktop: headline beside the car, like carvo.co */
+@media (min-width: 820px) {
+  body { padding: 28px; }
+  .card { padding: 28px 48px 36px; }
+  .logo { width: 116px; }
+  .hero { flex-direction: row; align-items: center; gap: 32px; }
+  .hero-text { flex: 1; display: flex; flex-direction: column; gap: 22px; }
+  .car-wrap { flex: 1; padding: 40px 0; }
+  .car { width: min(90%, 460px); }
+  .status { align-items: flex-start; }
+  .manual { display: none; }
+}
+@media (max-width: 819px) {
+  .hero-text { display: contents; }
+  .badge { order: 1; } h1 { order: 2; } .car-wrap { order: 3; } .status { order: 4; }
+}
 </style>
 </head>
 <body>
-<div class="card">
-  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 27" fill="none">
+<main class="card">
+  <div class="top">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 27" fill="none">
     <path d="M0.000182083 13.3612C-0.00896004 11.6206 0.326292 9.89539 0.986635 8.2849C1.64698 6.67442 2.61937 5.21047 3.84782 3.97733C5.07627 2.7442 6.53651 1.76624 8.14447 1.09978C9.75242 0.433307 11.4763 0.0914911 13.2169 0.0940079C19.0338 0.0940079 23.5245 3.41119 25.517 8.157L19.289 10.8048C18.8039 9.60391 17.972 8.57481 16.8995 7.84877C15.827 7.12273 14.5625 6.73268 13.2673 6.72837C9.59418 6.72837 6.73536 9.68801 6.73536 13.3612C6.73536 17.0343 9.59418 19.9955 13.2673 19.9955C14.5632 19.9907 15.8282 19.5997 16.9008 18.8725C17.9734 18.1453 18.8048 17.1149 19.289 15.9128L25.517 18.5669C23.5276 23.3111 19.037 26.6283 13.2201 26.6283C11.4792 26.6313 9.75497 26.2897 8.14665 25.6235C6.53833 24.9572 5.07771 23.9793 3.84893 22.7461C2.62014 21.5129 1.64747 20.0488 0.986933 18.4382C0.326393 16.8275 -0.00896209 15.102 0.000182083 13.3612Z" fill="#0B0B0B"/>
     <path d="M27.0469 13.3612C27.0469 4.32947 33.6797 0.0939941 39.4461 0.0939941C42.7633 0.0939941 45.3638 1.31786 47.0492 3.10403V0.60433H54.0395V26.1211H47.0492V23.2607C45.3654 25.2517 42.6609 26.6283 39.3438 26.6283C33.9348 26.6283 27.0469 22.3424 27.0469 13.3612ZM47.254 13.3107C47.254 9.53048 44.4975 6.47319 40.722 6.47319C36.8441 6.47319 33.8844 9.38085 33.8844 13.3107C33.8844 17.2407 36.8441 20.1987 40.722 20.1987C44.4975 20.1987 47.254 17.0863 47.254 13.3107Z" fill="#0B0B0B"/>
     <path d="M57.8663 0.604492H64.8063V4.78799C66.0821 2.1418 68.3786 0.604492 71.8486 0.604492H74.4003V7.39164H70.2152C66.4901 7.39164 64.8598 9.33061 64.8598 14.0764V26.1181H57.8663V0.604492Z" fill="#0B0B0B"/>
     <path d="M76.8496 0.604492H84.0447L90.0144 17.1888L95.8313 0.604492H102.919L93.53 26.1213H86.4893L76.8496 0.604492Z" fill="#0B0B0B"/>
     <path d="M102.568 13.361C102.549 11.6133 102.877 9.87924 103.532 8.25907C104.188 6.6389 105.158 5.16485 106.387 3.92225C107.616 2.67965 109.08 1.69317 110.693 1.01991C112.306 0.34666 114.036 0 115.784 0C117.532 0 119.262 0.34666 120.875 1.01991C122.488 1.69317 123.951 2.67965 125.18 3.92225C126.41 5.16485 127.38 6.6389 128.036 8.25907C128.691 9.87924 129.019 11.6133 129 13.361C129.019 15.1087 128.691 16.8428 128.036 18.463C127.38 20.0832 126.41 21.5572 125.18 22.7998C123.951 24.0424 122.488 25.0289 120.875 25.7022C119.262 26.3754 117.532 26.7221 115.784 26.7221C114.036 26.7221 112.306 26.3754 110.693 25.7022C109.08 25.0289 107.616 24.0424 106.387 22.7998C105.158 21.5572 104.188 20.0832 103.532 18.463C102.877 16.8428 102.549 15.1087 102.568 13.361ZM122.214 13.361C122.214 9.73828 119.355 6.72824 115.785 6.72824C112.162 6.72824 109.405 9.73828 109.405 13.361C109.405 16.9838 112.162 19.9954 115.785 19.9954C119.355 19.9954 122.214 16.9838 122.214 13.361Z" fill="#0B0B0B"/>
   </svg>
-  <div class="badge">اغسل عربيتك بضغطة زرار</div>
-  <h1 id="tag">ثواني ونوصّلك للتطبيق</h1>
-  <div class="bar" id="bar"></div>
-  <div class="btns" id="btns">
-    <a id="btn-ios" href="#">تحميل من App Store</a>
-    <a id="btn-and" class="alt" href="#">تحميل من Google Play</a>
+    <a class="cta-top" id="cta-top" href="#">حمل التطبيق</a>
   </div>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="badge">تجربة رقمية سهلة و آمنة بالكامل</span>
+      <h1>عناية فائقة التميّز، تصلك أينما كنت.</h1>
+      <div class="status" id="status">
+        <p id="tag">ثواني ونوصّلك للتطبيق…</p>
+        <div class="bar" id="bar"></div>
+        <div class="stores" id="stores">
+          <a id="btn-ios" class="store" href="#">App Store</a>
+          <a id="btn-and" class="store" href="#">Google Play</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-wrap">
+      <img class="car" src="https://carvo.co/images/car-hero.svg" alt="عربية كارفو البيضاء" onerror="this.parentNode.style.display='none'">
+    </div>
+  </section>
+
   <div class="manual">مش بتتحول؟ <a id="manual-link" href="#">اضغط هنا</a></div>
-</div>
+</main>
 
 <script>
 var qs = new URLSearchParams(window.location.search);
@@ -133,8 +173,7 @@ src = src.toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'qr_flyer';
 var medium = qs.get('utm_medium') || (src === 'meta' ? 'paid_social' : 'qr');
 var campaign = qs.get('utm_campaign') || 'nov2026';
 
-// App Store campaign link: fill APPLE_PT with the provider token from App Store Connect
-// (Apps > Analytics > Campaign Generator). Without it, iOS installs are not split by channel.
+// App Store campaign link (provider token from App Store Connect).
 var APPLE_PT = "128464915";
 var ios = "https://apps.apple.com/eg/app/carvo/id6757989520"
 + (APPLE_PT ? "?pt=" + APPLE_PT + "&ct=" + encodeURIComponent(src) + "&mt=8" : "");
@@ -160,6 +199,8 @@ gtag('event', 'store_redirect', { platform: platform, source: src });
 
 document.getElementById("manual-link").href = dest;
 document.getElementById("manual-link").onclick = function(){ gtag('event','manual_click',{platform:platform,source:src}); };
+document.getElementById("cta-top").href = dest;
+document.getElementById("cta-top").onclick = function(){ gtag('event','manual_click',{platform:platform,source:src}); if (platform !== 'other') pixelRedirect(platform); };
 document.getElementById("btn-ios").href = ios;
 document.getElementById("btn-and").href = android;
 document.getElementById("btn-ios").onclick = function(){ gtag('event','manual_click',{platform:'ios',source:src}); pixelRedirect('ios'); };
@@ -168,11 +209,15 @@ document.getElementById("btn-and").onclick = function(){ gtag('event','manual_cl
 if (platform === "other") {
   document.getElementById("tag").textContent = "حمّل التطبيق";
   document.getElementById("bar").style.display = "none";
-  document.getElementById("btns").style.display = "flex";
+  document.getElementById("stores").style.display = "flex";
+  document.getElementById("cta-top").href = "#stores";
 } else {
+  document.getElementById("tag").textContent = platform === "ios"
+    ? "ثواني ونوصّلك للـ App Store…"
+    : "ثواني ونوصّلك لـ Google Play…";
   pixelRedirect(platform);
-  // Slightly longer than before so the Meta Pixel beacon leaves before the store opens.
-  setTimeout(function() { window.location.href = dest; }, 1500);
+  // 2s: long enough to see the Carvo page and for the Pixel beacon to leave before the store opens.
+  setTimeout(function() { window.location.href = dest; }, 2000);
 }
 </script>
 </body>
